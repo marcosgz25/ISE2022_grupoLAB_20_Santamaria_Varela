@@ -12,6 +12,8 @@
 #include "LEDS.h"
 #include "lcd.h"
 #include "ADC.h"
+#include "RTC.h"
+
 //#include "Board_GLCD.h"
 //#include "GLCD_Config.h"
 //#include "Board_LED.h"
@@ -30,6 +32,7 @@ static void Display (void const *arg);
 
 osThreadDef(BlinkLed, osPriorityNormal, 1, 0);
 osThreadDef(Display, osPriorityNormal, 1, 0);
+
 
 /// Read analog inputs
 
@@ -79,8 +82,8 @@ static void Display (void const *arg) {
   //GLCD_DrawString         (0, 1*24, "       MDK-MW       ");
   //GLCD_DrawString         (0, 2*24, "HTTP Server example ");
 
-  sprintf (lcd_text[0], "");
-  sprintf (lcd_text[1], "Waiting for DHCP");
+  //sprintf (lcd_text[0], "");
+  //sprintf (lcd_text[1], "Waiting for DHCP");
   LCDupdate = true;
 
   while(1) {
@@ -121,6 +124,8 @@ static void BlinkLed (void const *arg) {
   }
 }
 
+
+
 /*----------------------------------------------------------------------------
   Main Thread 'main': Run Network
  *---------------------------------------------------------------------------*/
@@ -129,9 +134,10 @@ int main (void) {
   //Buttons_Initialize ();
   ADC_Initialize     ();
   net_initialize     ();
+  obtenerFechayHora();
   osThreadCreate (osThread(BlinkLed), NULL);
   osThreadCreate (osThread(Display), NULL);
-
+  RTC_IRQHandler();
   while(1) {
     net_main ();
     osThreadYield ();
