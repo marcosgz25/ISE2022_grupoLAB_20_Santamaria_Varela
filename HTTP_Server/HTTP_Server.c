@@ -26,14 +26,24 @@
 bool LEDrun;
 bool LCDupdate;
 char lcd_text[2][20+1];
-
+bool alarma;
 static void BlinkLed (void const *arg);
 static void Display (void const *arg);
+//static void RTC (void const *arg);
+//osThreadId tid_RTC;  
 
 osThreadDef(BlinkLed, osPriorityNormal, 1, 0);
 osThreadDef(Display, osPriorityNormal, 1, 0);
+//osThreadDef(RTC, osPriorityNormal, 1, 0);
 
 
+//int Init_Thread(void)
+//	{
+
+//	tid_RTC = osThreadCreate (osThread(RTC), NULL);
+//	if (!tid_RTC) return(-1);
+//	return(0);
+//}
 /// Read analog inputs
 
 uint16_t AD_in (uint32_t ch) {
@@ -67,7 +77,8 @@ void dhcp_client_notify (uint32_t if_num,
 /*----------------------------------------------------------------------------
   Thread 'Display': LCD display handler
  *---------------------------------------------------------------------------*/
-static void Display (void const *arg) {
+static void Display (void const *arg) 
+{
   //char lcd_buf[20+1];
   init();
   LCD_reset();
@@ -87,20 +98,47 @@ static void Display (void const *arg) {
   LCDupdate = true;
 
   while(1) {
-    if (LCDupdate == true) {
+    //if (LCDupdate == true) {
       //sprintf (lcd_buf, "%-20s", lcd_text[0]);
       //GLCD_DrawString (0, 5*24, lcd_buf);
       //sprintf (lcd_buf, "%-20s", lcd_text[1]);
       //GLCD_DrawString (0, 6*24, lcd_buf);
-      borrarLCD();
-			EscribeFrase(lcd_text[0],1);
-			EscribeFrase(lcd_text[1],2);
+			//  sprintf(hora,"%.2d:%.2d:%.2d",hourRTC, minRTC,secRTC);
+//  sprintf(RTC_hora,"%-20s",hora);
+//  Escribir_linea(RTC_hora,0);
+//  
+		RTC_getTime_Date();
+		
+//  sprintf(fecha,"%.2d/%.2d/%.2d",dayRTC, monRTC,yearRTC);
+//  sprintf(RTC_fecha,"%-20s",fecha);
+//  Escribir_linea(RTC_fecha,1);
+//      borrarLCD();
+//			EscribeFrase(lcd_text[0],1);
+//			EscribeFrase(lcd_text[1],2);
       copy_to_lcd();
-      LCDupdate = false;
-    }
+//      LCDupdate = false;
+    //}
     osDelay (250);
   }
 }
+
+//static void RTC (void const *arg)
+//{
+//	osEvent evt;
+//	int i;
+//	while(1)
+//	{
+//		evt=osSignalWait(0x02,osWaitForever);
+////		for(i=0;i<5;i++)
+////		{
+////			LED_SetOut(4);
+////			osDelay(500);
+////			LED_SetOut(0);
+////			osDelay(500);
+////		}
+//	}
+//	
+//}
 
 /*----------------------------------------------------------------------------
   Thread 'BlinkLed': Blink the LEDs on an eval board
@@ -110,11 +148,22 @@ static void BlinkLed (void const *arg) {
   //                              0x12,0x0A,0x0C,0x14,0x18,0x28,0x30,0x50 };
   const uint8_t led_val[8]=  {0x48,0x88,0x84,0x44,0x42,0x22,0x21,0x11};
   int cnt = 0;
-
+	int i;
   LEDrun = true;
   while(1) {
     // Every 100 ms
-    if (LEDrun == true) {
+		if(alarma)
+		{
+			for(i=0;i<5;i++)
+			{
+				LED_SetOut (led_val[0]);
+				osDelay(500);
+				LED_SetOut (0);
+				osDelay(500);
+			}
+			alarma=false;
+		}
+    else if (LEDrun == true) {
       LED_SetOut (led_val[cnt]);
       if (++cnt >= sizeof(led_val)) {
         cnt = 0;
@@ -134,9 +183,10 @@ int main (void) {
   //Buttons_Initialize ();
   ADC_Initialize     ();
   net_initialize     ();
-  obtenerFechayHora();
-  osThreadCreate (osThread(BlinkLed), NULL);
+	c_entry();
+	osThreadCreate (osThread(BlinkLed), NULL);
   osThreadCreate (osThread(Display), NULL);
+//	Init_Thread();
   RTC_IRQHandler();
   while(1) {
     net_main ();
