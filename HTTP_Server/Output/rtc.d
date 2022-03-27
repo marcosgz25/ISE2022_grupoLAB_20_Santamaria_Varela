@@ -22,5 +22,6 @@
 .\output\rtc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\output\rtc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\output\rtc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\output\rtc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\time.h
 .\output\rtc.o: leds.h
 .\output\rtc.o: C:\Users\Juan\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\RTOS\RTX\INC\cmsis_os.h

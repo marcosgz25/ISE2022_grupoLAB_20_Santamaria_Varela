@@ -4,6 +4,7 @@
 .\output\net_config.o: RTE\Network\Net_Config_UDP.h
 .\output\net_config.o: RTE\Network\Net_Config_TCP.h
 .\output\net_config.o: RTE\Network\Net_Config_HTTP_Server.h
+.\output\net_config.o: RTE\Network\Net_Config_SNTP_Client.h
 .\output\net_config.o: C:\Users\Juan\AppData\Local\Arm\Packs\Keil\MDK-Middleware\7.13.0\Network_v6\Include\net_config.h
 .\output\net_config.o: C:\Users\Juan\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\RTOS\RTX\INC\cmsis_os.h
 .\output\net_config.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h

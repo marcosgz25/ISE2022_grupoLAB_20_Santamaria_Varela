@@ -13,38 +13,56 @@
 #include "lcd.h"
 #include "ADC.h"
 #include "RTC.h"
+#include "time.h"
+#include "rebotes.h"
 
-//#include "Board_GLCD.h"
-//#include "GLCD_Config.h"
-//#include "Board_LED.h"
-//#include "Board_Buttons.h"
-//#include "Board_ADC.h"
-
-//extern GLCD_FONT GLCD_Font_6x8;
-//extern GLCD_FONT GLCD_Font_16x24;
-
+RTC_TIME tiempo;
+struct tm horaSNTP;
 bool LEDrun;
 bool LCDupdate;
 char lcd_text[2][20+1];
 bool alarma;
+bool timer;
+bool ledSNTP;
+
+void get_time(void);
 static void BlinkLed (void const *arg);
 static void Display (void const *arg);
-//static void RTC (void const *arg);
-//osThreadId tid_RTC;  
+static void time_cback (uint32_t time);//PROTOCOLO SNTP
 
 osThreadDef(BlinkLed, osPriorityNormal, 1, 0);
 osThreadDef(Display, osPriorityNormal, 1, 0);
-//osThreadDef(RTC, osPriorityNormal, 1, 0);
+
+//TIMER
+static void Timer2_Callback (void const *arg);                  // prototype for timer callback function
+
+static osTimerId id2;                                           // timer id
+static uint32_t  exec2;                                         // argument for the timer call back function
+static osTimerDef (Timer2, Timer2_Callback);
+ 
+ static void Timer2_Callback (void const *arg)
+{
+	get_time();
+	ledSNTP=true;
+}
+
+void Init_Timers (void) {
+  osStatus status;                                              // function return status
+  // Create periodic timer
+  exec2 = 2;
+  id2 = osTimerCreate (osTimer(Timer2), osTimerPeriodic, &exec2);
+  if (id2 != NULL) {    // Periodic timer created
+    // start timer with periodic 1000ms interval
+    status = osTimerStart (id2,180000);            
+    if (status != osOK) {
+      // Timer could not be started
+    }
+  }
+}
+
+//PULSADOR
 
 
-//int Init_Thread(void)
-//	{
-
-//	tid_RTC = osThreadCreate (osThread(RTC), NULL);
-//	if (!tid_RTC) return(-1);
-//	return(0);
-//}
-/// Read analog inputs
 
 uint16_t AD_in (uint32_t ch) {
   int32_t val = 0;
@@ -57,12 +75,6 @@ uint16_t AD_in (uint32_t ch) {
   return (val);
 }
 
-/// Read digital inputs
-/*
-uint8_t get_button (void) {
-  return (Buttons_GetState ());
-}
-*/
 /// IP address change notification
 void dhcp_client_notify (uint32_t if_num,
                          dhcpClientOption opt, const uint8_t *val, uint32_t len) {
@@ -79,36 +91,19 @@ void dhcp_client_notify (uint32_t if_num,
  *---------------------------------------------------------------------------*/
 static void Display (void const *arg) 
 {
-  //char lcd_buf[20+1];
+	
   init();
   LCD_reset();
   borrarLCD();
   copy_to_lcd();
-
-  //GLCD_Initialize         ();
-  //GLCD_SetBackgroundColor (GLCD_COLOR_BLUE);
-  //GLCD_SetForegroundColor (GLCD_COLOR_WHITE);
-  //GLCD_ClearScreen        ();
-  //GLCD_SetFont            (&GLCD_Font_16x24);
-  //GLCD_DrawString         (0, 1*24, "       MDK-MW       ");
-  //GLCD_DrawString         (0, 2*24, "HTTP Server example ");
-
+	
   //sprintf (lcd_text[0], "");
   //sprintf (lcd_text[1], "Waiting for DHCP");
   LCDupdate = true;
-
-  while(1) {
-    //if (LCDupdate == true) {
-      //sprintf (lcd_buf, "%-20s", lcd_text[0]);
-      //GLCD_DrawString (0, 5*24, lcd_buf);
-      //sprintf (lcd_buf, "%-20s", lcd_text[1]);
-      //GLCD_DrawString (0, 6*24, lcd_buf);
-			//  sprintf(hora,"%.2d:%.2d:%.2d",hourRTC, minRTC,secRTC);
-//  sprintf(RTC_hora,"%-20s",hora);
-//  Escribir_linea(RTC_hora,0);
-//  
-		RTC_getTime_Date();
-		
+  while(1) 
+	{
+		RTC_getTime_Date();	
+    //RTC_ver_hora();
 //  sprintf(fecha,"%.2d/%.2d/%.2d",dayRTC, monRTC,yearRTC);
 //  sprintf(RTC_fecha,"%-20s",fecha);
 //  Escribir_linea(RTC_fecha,1);
@@ -122,24 +117,6 @@ static void Display (void const *arg)
   }
 }
 
-//static void RTC (void const *arg)
-//{
-//	osEvent evt;
-//	int i;
-//	while(1)
-//	{
-//		evt=osSignalWait(0x02,osWaitForever);
-////		for(i=0;i<5;i++)
-////		{
-////			LED_SetOut(4);
-////			osDelay(500);
-////			LED_SetOut(0);
-////			osDelay(500);
-////		}
-//	}
-//	
-//}
-
 /*----------------------------------------------------------------------------
   Thread 'BlinkLed': Blink the LEDs on an eval board
  *---------------------------------------------------------------------------*/
@@ -152,6 +129,14 @@ static void BlinkLed (void const *arg) {
   LEDrun = true;
   while(1) {
     // Every 100 ms
+    if(ledSNTP)
+    {
+      ledSNTP=false;
+      LED_SetOut (led_val[1]);
+      osDelay(500);
+      LED_SetOut (0);
+      osDelay(500);
+    }
 		if(alarma)
 		{
 			for(i=0;i<5;i++)
@@ -173,6 +158,38 @@ static void BlinkLed (void const *arg) {
   }
 }
 
+//SNTP
+void get_time(void)
+{
+	const uint8_t ntp_server[4]={130,206,0,1};
+	if(sntp_get_time(&ntp_server[0],time_cback)==netOK)
+	{
+    borrarLCD();
+    EscribeFrase("Solicitud enviada",1);
+    copy_to_lcd();
+	}
+	else
+	{
+    borrarLCD();
+    EscribeFrase("Fallo SNTP",1);
+    copy_to_lcd();
+	}
+    
+}
+
+static  void time_cback (uint32_t time)
+{
+    time_t tiemp;
+    if(time==0){
+      EscribeFrase("Error servidor ",2);
+    
+    }else{
+      EscribeFrase("Hora SNTP        ",2);
+      tiemp=time;
+      horaSNTP=*localtime(&tiemp);
+      RTC_Set_Time();
+    }
+}
 
 
 /*----------------------------------------------------------------------------
@@ -183,11 +200,14 @@ int main (void) {
   //Buttons_Initialize ();
   ADC_Initialize     ();
   net_initialize     ();
+  osDelay(10000);
+  get_time();
 	c_entry();
 	osThreadCreate (osThread(BlinkLed), NULL);
   osThreadCreate (osThread(Display), NULL);
-//	Init_Thread();
-  RTC_IRQHandler();
+  //Init_Thread_Rebotes();
+  Inicializar_Pulsadores();
+	Init_Timers();
   while(1) {
     net_main ();
     osThreadYield ();

@@ -24,3 +24,5 @@
 .\output\http_server.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\output\http_server.o: ADC.h
 .\output\http_server.o: RTC.h
+.\output\http_server.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\time.h
+.\output\http_server.o: rebotes.h

@@ -477,6 +477,16 @@
               <FileType>5</FileType>
               <FilePath>.\lpc_types.h</FilePath>
             </File>
+            <File>
+              <FileName>rebotes.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\rebotes.c</FilePath>
+            </File>
+            <File>
+              <FileName>rebotes.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\rebotes.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1074,6 +1084,16 @@
               <FileType>5</FileType>
               <FilePath>.\lpc_types.h</FilePath>
             </File>
+            <File>
+              <FileName>rebotes.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\rebotes.c</FilePath>
+            </File>
+            <File>
+              <FileName>rebotes.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\rebotes.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1262,6 +1282,13 @@
           <targetInfo name="LPC1768 Flash"/>
         </targetInfos>
       </component>
+      <component Cbundle="MDK-Pro Net_v6" Cclass="Network" Cgroup="Service" Csub="SNTP Client" Cvendor="Keil" Cversion="6.7.7" condition="Network UDP">
+        <package name="MDK-Middleware" schemaVersion="1.4" url="http://www.keil.com/pack/" vendor="Keil" version="7.13.0"/>
+        <targetInfos>
+          <targetInfo name="LPC1758 Flash"/>
+          <targetInfo name="LPC1768 Flash"/>
+        </targetInfos>
+      </component>
       <component Cbundle="MDK-Pro Net_v6" Cclass="Network" Cgroup="Service" Csub="Web Server Compact" Cvendor="Keil" Cversion="6.7.7" condition="Network Web Server Compact">
         <package name="MDK-Middleware" schemaVersion="1.4" url="http://www.keil.com/pack/" vendor="Keil" version="7.13.0"/>
         <targetInfos>
@@ -1412,6 +1439,15 @@
       <file attr="config" category="header" name="Network_v6\Config\Net_Config_HTTP_Server.h" version="5.0.4">
         <instance index="0">RTE\Network\Net_Config_HTTP_Server.h</instance>
         <component Cbundle="MDK-Pro Net_v6" Cclass="Network" Cgroup="Service" Csub="Web Server Compact" Cvendor="Keil" Cversion="6.7.7" condition="Network Web Server Compact"/>
+        <package license="license.rtf" name="MDK-Middleware" schemaVersion="1.4" url="http://www.keil.com/pack/" vendor="Keil" version="7.13.0"/>
+        <targetInfos>
+          <targetInfo name="LPC1758 Flash"/>
+          <targetInfo name="LPC1768 Flash"/>
+        </targetInfos>
+      </file>
+      <file attr="config" category="header" name="Network_v6\Config\Net_Config_SNTP_Client.h" version="0.0.0">
+        <instance index="0">RTE\Network\Net_Config_SNTP_Client.h</instance>
+        <component Cbundle="MDK-Pro Net_v6" Cclass="Network" Cgroup="Service" Csub="SNTP Client" Cvendor="Keil" Cversion="6.7.7" condition="Network UDP"/>
         <package license="license.rtf" name="MDK-Middleware" schemaVersion="1.4" url="http://www.keil.com/pack/" vendor="Keil" version="7.13.0"/>
         <targetInfos>
           <targetInfo name="LPC1758 Flash"/>
