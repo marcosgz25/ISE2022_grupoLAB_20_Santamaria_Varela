@@ -61,8 +61,17 @@ void Init_Timers (void) {
 }
 
 //PULSADOR
+ void EINT3_IRQHandler(void)
+ {
+   if(LPC_GPIOINT-> IO0IntStatR & (1 << CENTER))
+	{
+		LPC_GPIOINT->IO0IntClr |=1 << CENTER;
+		osSignalSet(rebotes_id,CENTRO_SUBIDA);
+    RTC_Reset();
+		//LPC_GPIOINT->IO0IntEnR &= ~(1 <<CENTER);
+	}
 
-
+ }
 
 uint16_t AD_in (uint32_t ch) {
   int32_t val = 0;
@@ -102,11 +111,14 @@ static void Display (void const *arg)
   LCDupdate = true;
   while(1) 
 	{
+		borrarLCD();
 		RTC_getTime_Date();	
     //RTC_ver_hora();
 //  sprintf(fecha,"%.2d/%.2d/%.2d",dayRTC, monRTC,yearRTC);
 //  sprintf(RTC_fecha,"%-20s",fecha);
 //  Escribir_linea(RTC_fecha,1);
+		sprintf (lcd_text[0],"%.2d/%.2d/%.2d",tiempo.HOUR, tiempo.MIN,tiempo.SEC);
+		sprintf (lcd_text[1],"%.2d/%.2d/%.2d",tiempo.DOM, tiempo.MONTH,tiempo.YEAR);
 //      borrarLCD();
 //			EscribeFrase(lcd_text[0],1);
 //			EscribeFrase(lcd_text[1],2);
@@ -132,7 +144,7 @@ static void BlinkLed (void const *arg) {
     if(ledSNTP)
     {
       ledSNTP=false;
-      LED_SetOut (led_val[1]);
+      LED_SetOut (led_val[3]);
       osDelay(500);
       LED_SetOut (0);
       osDelay(500);

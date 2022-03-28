@@ -24,27 +24,27 @@
 //     <i>LSB is an ethernet Multicast bit.
 //     <i>Must be 0 for local MAC address.
 //     <i>Default: 0x1E
-#define ETH0_MAC1               0x24//0x1E
+#define ETH0_MAC1               0x00//0x1E
 
 //     <o>Address byte 2 <0x00-0xff>
 //     <i>Default: 0x30
-#define ETH0_MAC2               0x4B//0x30
+#define ETH0_MAC2               0xE0//0x30
 
 //     <o>Address byte 3 <0x00-0xff>
 //     <i>Default: 0x6C
-#define ETH0_MAC3               0xFE//0x6C
+#define ETH0_MAC3               0x4C//0x6C
 
 //     <o>Address byte 4 <0x00-0xff>
 //     <i>Default: 0xA2
-#define ETH0_MAC4               0x4A//0xA2
+#define ETH0_MAC4               0x68//0xA2
 
 //     <o>Address byte 5 <0x00-0xff>
 //     <i>Default: 0x45
-#define ETH0_MAC5               0xBE//0x45
+#define ETH0_MAC5               0x00//0x45
 
 //     <o>Address byte 6 <0x00-0xff>
 //     <i>Default: 0x5E
-#define ETH0_MAC6               0x45//0x5E
+#define ETH0_MAC6               0x8F//0x5E
 //   </h>
 
 //   <h>IP Address
@@ -65,7 +65,7 @@
 
 //     <o>Address byte 4 <0-255>
 //     <i>Default: 100
-#define ETH0_IP4                44//100
+#define ETH0_IP4                164//100
 //   </h>
 
 //   <h>Subnet mask

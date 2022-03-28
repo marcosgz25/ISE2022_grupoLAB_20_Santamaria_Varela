@@ -1283,7 +1283,7 @@
         </targetInfos>
       </component>
       <component Cbundle="MDK-Pro Net_v6" Cclass="Network" Cgroup="Service" Csub="SNTP Client" Cvendor="Keil" Cversion="6.7.7" condition="Network UDP">
-        <package name="MDK-Middleware" schemaVersion="1.4" url="http://www.keil.com/pack/" vendor="Keil" version="7.13.0"/>
+        <package license="license.rtf" name="MDK-Middleware" schemaVersion="1.4" url="http://www.keil.com/pack/" vendor="Keil" version="7.13.0"/>
         <targetInfos>
           <targetInfo name="LPC1758 Flash"/>
           <targetInfo name="LPC1768 Flash"/>
@@ -1445,7 +1445,7 @@
           <targetInfo name="LPC1768 Flash"/>
         </targetInfos>
       </file>
-      <file attr="config" category="header" name="Network_v6\Config\Net_Config_SNTP_Client.h" version="0.0.0">
+      <file attr="config" category="header" name="Network_v6\Config\Net_Config_SNTP_Client.h" version="5.0.0">
         <instance index="0">RTE\Network\Net_Config_SNTP_Client.h</instance>
         <component Cbundle="MDK-Pro Net_v6" Cclass="Network" Cgroup="Service" Csub="SNTP Client" Cvendor="Keil" Cversion="6.7.7" condition="Network UDP"/>
         <package license="license.rtf" name="MDK-Middleware" schemaVersion="1.4" url="http://www.keil.com/pack/" vendor="Keil" version="7.13.0"/>

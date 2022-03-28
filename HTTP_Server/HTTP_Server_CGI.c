@@ -12,6 +12,8 @@
 #include "rl_net.h"
 #include "rl_net_lib.h"
 #include "LEDS.h"
+#include "RTC.h"
+
 //#include "Board_LED.h"
 
 // http_server.c
@@ -33,6 +35,7 @@ extern struct http_cfg  http_config;
 extern bool LEDrun;
 extern bool LCDupdate;
 extern char lcd_text[2][20+1];
+
 
 // Local variables.
 static uint8_t P2;
@@ -316,10 +319,29 @@ uint32_t cgi_script (const char *env, char *buf, uint32_t buflen, uint32_t *pcgi
       len = sprintf (buf, &env[1], adv);
       break;
 
+   		case 'w':
+      // Button state from 'button.cgi'
+			switch (env[2]) {
+        case '1':
+          len = sprintf (buf, &env[4], lcd_text[0]);
+          break;
+        case '2':
+          len = sprintf (buf, &env[4], lcd_text[1]);
+          break;
+      }
+      break;
+		
     case 'y':
       // Button state from 'button.cgx'
-//      len = sprintf (buf, "<checkbox><id>button%c</id><on>%s</on></checkbox>",
-//                     env[1], (get_button () & (1 << (env[1]-'0'))) ? "true" : "false");
+
+      len = sprintf (buf, &env[1], lcd_text[0]);
+      
+      break;
+
+       case 'z':
+      // Button state from 'button.cgx'
+
+      len = sprintf (buf, &env[1], lcd_text[1]);
       break;
   }
   return (len);

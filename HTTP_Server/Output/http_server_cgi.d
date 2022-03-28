@@ -23,3 +23,4 @@
 .\output\http_server_cgi.o: C:\Users\Juan\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_armcc.h
 .\output\http_server_cgi.o: C:\Users\Juan\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\mpu_armv7.h
 .\output\http_server_cgi.o: C:\Users\Juan\AppData\Local\Arm\Packs\Keil\LPC1700_DFP\2.5.0\Device\Include\system_LPC17xx.h
+.\output\http_server_cgi.o: RTC.h

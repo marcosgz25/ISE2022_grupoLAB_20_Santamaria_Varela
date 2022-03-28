@@ -4,7 +4,8 @@
 #include "lcd.h"
 #include "time.h"
 #include "leds.h"
-#include "cmsis_os.h"     
+#include "cmsis_os.h"  
+
 extern RTC_TIME tiempo;
 extern struct tm horaSNTP;
 char hora[20];
@@ -101,12 +102,4 @@ void RTC_Reset(void)
 	RTC_SetTime (LPC_RTC,RTC_TIMETYPE_DAYOFMONTH, 1);
 	RTC_SetTime (LPC_RTC,RTC_TIMETYPE_MONTH, 1);
 	RTC_SetTime (LPC_RTC,RTC_TIMETYPE_YEAR,2000);
-}
-
-void RTC_ver_hora(void)
-{
-  sprintf(hora,"%.2d:%.2d:%.2d",tiempo.HOUR, tiempo.MIN,tiempo.SEC);
-  EscribeFrase(hora,1);
-  sprintf(fecha,"%.2d/%.2d/%.2d",tiempo.DOM, tiempo.MONTH,tiempo.YEAR);
-  EscribeFrase(fecha,2);
 }
