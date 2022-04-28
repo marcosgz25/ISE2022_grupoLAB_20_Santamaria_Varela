@@ -185,7 +185,6 @@
             <uocXRam>0</uocXRam>
             <RvdsVP>0</RvdsVP>
             <RvdsMve>0</RvdsMve>
-            <RvdsCdeCp>0</RvdsCdeCp>
             <hadIRAM2>1</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -352,7 +351,7 @@
             <NoWarn>0</NoWarn>
             <uSurpInc>0</uSurpInc>
             <useXO>0</useXO>
-            <ClangAsOpt>4</ClangAsOpt>
+            <uClangAs>0</uClangAs>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define></Define>
@@ -478,6 +477,36 @@
               <FileType>5</FileType>
               <FilePath>.\lpc_types.h</FilePath>
             </File>
+            <File>
+              <FileName>rebotes.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\rebotes.c</FilePath>
+            </File>
+            <File>
+              <FileName>rebotes.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\rebotes.h</FilePath>
+            </File>
+            <File>
+              <FileName>IAP.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\IAP.c</FilePath>
+            </File>
+            <File>
+              <FileName>IAP.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\IAP.h</FilePath>
+            </File>
+            <File>
+              <FileName>lpc17xx_iap.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\lpc17xx_iap.c</FilePath>
+            </File>
+            <File>
+              <FileName>lpc17xx_iap.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\lpc17xx_iap.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -497,56 +526,6 @@
               <FileName>pg_footer.inc</FileName>
               <FileType>9</FileType>
               <FilePath>.\Web\pg_footer.inc</FilePath>
-            </File>
-            <File>
-              <FileName>ad.cgi</FileName>
-              <FileType>9</FileType>
-              <FilePath>.\Web\ad.cgi</FilePath>
-            </File>
-            <File>
-              <FileName>ad.cgx</FileName>
-              <FileType>9</FileType>
-              <FilePath>.\Web\ad.cgx</FilePath>
-            </File>
-            <File>
-              <FileName>buttons.cgi</FileName>
-              <FileType>9</FileType>
-              <FilePath>.\Web\buttons.cgi</FilePath>
-            </File>
-            <File>
-              <FileName>buttons.cgx</FileName>
-              <FileType>9</FileType>
-              <FilePath>.\Web\buttons.cgx</FilePath>
-            </File>
-            <File>
-              <FileName>language.cgi</FileName>
-              <FileType>9</FileType>
-              <FilePath>.\Web\language.cgi</FilePath>
-            </File>
-            <File>
-              <FileName>lcd.cgi</FileName>
-              <FileType>9</FileType>
-              <FilePath>.\Web\lcd.cgi</FilePath>
-            </File>
-            <File>
-              <FileName>leds.cgi</FileName>
-              <FileType>9</FileType>
-              <FilePath>.\Web\leds.cgi</FilePath>
-            </File>
-            <File>
-              <FileName>network.cgi</FileName>
-              <FileType>9</FileType>
-              <FilePath>.\Web\network.cgi</FilePath>
-            </File>
-            <File>
-              <FileName>system.cgi</FileName>
-              <FileType>9</FileType>
-              <FilePath>.\Web\system.cgi</FilePath>
-            </File>
-            <File>
-              <FileName>tcp.cgi</FileName>
-              <FileType>9</FileType>
-              <FilePath>.\Web\tcp.cgi</FilePath>
             </File>
             <File>
               <FileName>xml_http.js</FileName>
@@ -578,6 +557,21 @@
               <FileType>9</FileType>
               <FilePath>.\Web\pabb.gif</FilePath>
             </File>
+            <File>
+              <FileName>ganancia.cgi</FileName>
+              <FileType>9</FileType>
+              <FilePath>.\Web\ganancia.cgi</FilePath>
+            </File>
+            <File>
+              <FileName>buttons.cgi</FileName>
+              <FileType>9</FileType>
+              <FilePath>.\Web\buttons.cgi</FilePath>
+            </File>
+            <File>
+              <FileName>buttons.cgx</FileName>
+              <FileType>9</FileType>
+              <FilePath>.\Web\buttons.cgx</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -608,7 +602,7 @@
       <TargetName>LPC1768 Flash</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060960::V5.06 update 7 (build 960)::ARMCC</pCCUsed>
+      <pCCUsed>5060750::V5.06 update 6 (build 750)::ARMCC</pCCUsed>
       <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
@@ -732,11 +726,11 @@
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
             <Capability>1</Capability>
-            <DriverSelection>4096</DriverSelection>
+            <DriverSelection>4099</DriverSelection>
           </Flash1>
-          <bUseTDR>1</bUseTDR>
-          <Flash2>BIN\UL2CM3.DLL</Flash2>
-          <Flash3></Flash3>
+          <bUseTDR>0</bUseTDR>
+          <Flash2>BIN\CMSIS_AGDI.dll</Flash2>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut>Web.c</pFcarmOut>
           <pFcarmGrp>Source</pFcarmGrp>
@@ -783,7 +777,6 @@
             <uocXRam>0</uocXRam>
             <RvdsVP>0</RvdsVP>
             <RvdsMve>0</RvdsMve>
-            <RvdsCdeCp>0</RvdsCdeCp>
             <hadIRAM2>1</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -911,7 +904,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>4</Optim>
+            <Optim>1</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>0</OneElfS>
@@ -950,7 +943,7 @@
             <NoWarn>0</NoWarn>
             <uSurpInc>0</uSurpInc>
             <useXO>0</useXO>
-            <ClangAsOpt>4</ClangAsOpt>
+            <uClangAs>0</uClangAs>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define></Define>
@@ -1076,6 +1069,36 @@
               <FileType>5</FileType>
               <FilePath>.\lpc_types.h</FilePath>
             </File>
+            <File>
+              <FileName>rebotes.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\rebotes.c</FilePath>
+            </File>
+            <File>
+              <FileName>rebotes.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\rebotes.h</FilePath>
+            </File>
+            <File>
+              <FileName>IAP.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\IAP.c</FilePath>
+            </File>
+            <File>
+              <FileName>IAP.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\IAP.h</FilePath>
+            </File>
+            <File>
+              <FileName>lpc17xx_iap.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\lpc17xx_iap.c</FilePath>
+            </File>
+            <File>
+              <FileName>lpc17xx_iap.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\lpc17xx_iap.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1095,56 +1118,6 @@
               <FileName>pg_footer.inc</FileName>
               <FileType>9</FileType>
               <FilePath>.\Web\pg_footer.inc</FilePath>
-            </File>
-            <File>
-              <FileName>ad.cgi</FileName>
-              <FileType>9</FileType>
-              <FilePath>.\Web\ad.cgi</FilePath>
-            </File>
-            <File>
-              <FileName>ad.cgx</FileName>
-              <FileType>9</FileType>
-              <FilePath>.\Web\ad.cgx</FilePath>
-            </File>
-            <File>
-              <FileName>buttons.cgi</FileName>
-              <FileType>9</FileType>
-              <FilePath>.\Web\buttons.cgi</FilePath>
-            </File>
-            <File>
-              <FileName>buttons.cgx</FileName>
-              <FileType>9</FileType>
-              <FilePath>.\Web\buttons.cgx</FilePath>
-            </File>
-            <File>
-              <FileName>language.cgi</FileName>
-              <FileType>9</FileType>
-              <FilePath>.\Web\language.cgi</FilePath>
-            </File>
-            <File>
-              <FileName>lcd.cgi</FileName>
-              <FileType>9</FileType>
-              <FilePath>.\Web\lcd.cgi</FilePath>
-            </File>
-            <File>
-              <FileName>leds.cgi</FileName>
-              <FileType>9</FileType>
-              <FilePath>.\Web\leds.cgi</FilePath>
-            </File>
-            <File>
-              <FileName>network.cgi</FileName>
-              <FileType>9</FileType>
-              <FilePath>.\Web\network.cgi</FilePath>
-            </File>
-            <File>
-              <FileName>system.cgi</FileName>
-              <FileType>9</FileType>
-              <FilePath>.\Web\system.cgi</FilePath>
-            </File>
-            <File>
-              <FileName>tcp.cgi</FileName>
-              <FileType>9</FileType>
-              <FilePath>.\Web\tcp.cgi</FilePath>
             </File>
             <File>
               <FileName>xml_http.js</FileName>
@@ -1175,6 +1148,21 @@
               <FileName>pabb.gif</FileName>
               <FileType>9</FileType>
               <FilePath>.\Web\pabb.gif</FilePath>
+            </File>
+            <File>
+              <FileName>ganancia.cgi</FileName>
+              <FileType>9</FileType>
+              <FilePath>.\Web\ganancia.cgi</FilePath>
+            </File>
+            <File>
+              <FileName>buttons.cgi</FileName>
+              <FileType>9</FileType>
+              <FilePath>.\Web\buttons.cgi</FilePath>
+            </File>
+            <File>
+              <FileName>buttons.cgx</FileName>
+              <FileType>9</FileType>
+              <FilePath>.\Web\buttons.cgx</FilePath>
             </File>
           </Files>
         </Group>
@@ -1259,6 +1247,13 @@
       </component>
       <component Cbundle="MDK-Pro Net_v6" Cclass="Network" Cgroup="Interface" Csub="ETH" Cvendor="Keil" Cversion="6.7.7" condition="Network Driver ETH" maxInstances="1">
         <package name="MDK-Middleware" schemaVersion="1.4" url="http://www.keil.com/pack/" vendor="Keil" version="7.13.0"/>
+        <targetInfos>
+          <targetInfo name="LPC1758 Flash"/>
+          <targetInfo name="LPC1768 Flash"/>
+        </targetInfos>
+      </component>
+      <component Cbundle="MDK-Pro Net_v6" Cclass="Network" Cgroup="Service" Csub="SNTP Client" Cvendor="Keil" Cversion="6.7.7" condition="Network UDP">
+        <package license="license.rtf" name="MDK-Middleware" schemaVersion="1.4" url="http://www.keil.com/pack/" vendor="Keil" version="7.13.0"/>
         <targetInfos>
           <targetInfo name="LPC1758 Flash"/>
           <targetInfo name="LPC1768 Flash"/>
@@ -1396,7 +1391,7 @@
       <file attr="config" category="source" name="Network_v6\Config\Net_Config.c" version="5.0.4">
         <instance index="0">RTE\Network\Net_Config.c</instance>
         <component Cbundle="MDK-Pro Net_v6" Cclass="Network" Cgroup="CORE" Cvariant="Release" Cvendor="Keil" Cversion="6.7.7" condition="CMSIS Core with RTOS" isDefaultVariant="1"/>
-        <package name="MDK-Middleware" schemaVersion="1.4" url="http://www.keil.com/pack/" vendor="Keil" version="7.13.0"/>
+        <package license="license.rtf" name="MDK-Middleware" schemaVersion="1.4" url="http://www.keil.com/pack/" vendor="Keil" version="7.13.0"/>
         <targetInfos>
           <targetInfo name="LPC1758 Flash"/>
           <targetInfo name="LPC1768 Flash"/>
@@ -1405,7 +1400,7 @@
       <file attr="config" category="header" name="Network_v6\Config\Net_Config_ETH.h" version="5.01">
         <instance index="0">RTE\Network\Net_Config_ETH_0.h</instance>
         <component Cbundle="MDK-Pro Net_v6" Cclass="Network" Cgroup="Interface" Csub="ETH" Cvendor="Keil" Cversion="6.7.7" condition="Network Driver ETH" maxInstances="1"/>
-        <package name="MDK-Middleware" schemaVersion="1.4" url="http://www.keil.com/pack/" vendor="Keil" version="7.13.0"/>
+        <package license="license.rtf" name="MDK-Middleware" schemaVersion="1.4" url="http://www.keil.com/pack/" vendor="Keil" version="7.13.0"/>
         <targetInfos>
           <targetInfo name="LPC1758 Flash"/>
           <targetInfo name="LPC1768 Flash"/>
@@ -1414,7 +1409,16 @@
       <file attr="config" category="header" name="Network_v6\Config\Net_Config_HTTP_Server.h" version="5.0.4">
         <instance index="0">RTE\Network\Net_Config_HTTP_Server.h</instance>
         <component Cbundle="MDK-Pro Net_v6" Cclass="Network" Cgroup="Service" Csub="Web Server Compact" Cvendor="Keil" Cversion="6.7.7" condition="Network Web Server Compact"/>
-        <package name="MDK-Middleware" schemaVersion="1.4" url="http://www.keil.com/pack/" vendor="Keil" version="7.13.0"/>
+        <package license="license.rtf" name="MDK-Middleware" schemaVersion="1.4" url="http://www.keil.com/pack/" vendor="Keil" version="7.13.0"/>
+        <targetInfos>
+          <targetInfo name="LPC1758 Flash"/>
+          <targetInfo name="LPC1768 Flash"/>
+        </targetInfos>
+      </file>
+      <file attr="config" category="header" name="Network_v6\Config\Net_Config_SNTP_Client.h" version="5.0.0">
+        <instance index="0">RTE\Network\Net_Config_SNTP_Client.h</instance>
+        <component Cbundle="MDK-Pro Net_v6" Cclass="Network" Cgroup="Service" Csub="SNTP Client" Cvendor="Keil" Cversion="6.7.7" condition="Network UDP"/>
+        <package license="license.rtf" name="MDK-Middleware" schemaVersion="1.4" url="http://www.keil.com/pack/" vendor="Keil" version="7.13.0"/>
         <targetInfos>
           <targetInfo name="LPC1758 Flash"/>
           <targetInfo name="LPC1768 Flash"/>
@@ -1423,7 +1427,7 @@
       <file attr="config" category="header" name="Network_v6\Config\Net_Config_TCP.h" version="5.0.4">
         <instance index="0">RTE\Network\Net_Config_TCP.h</instance>
         <component Cbundle="MDK-Pro Net_v6" Cclass="Network" Cgroup="Socket" Csub="TCP" Cvendor="Keil" Cversion="6.7.7" condition="Network Interface"/>
-        <package name="MDK-Middleware" schemaVersion="1.4" url="http://www.keil.com/pack/" vendor="Keil" version="7.13.0"/>
+        <package license="license.rtf" name="MDK-Middleware" schemaVersion="1.4" url="http://www.keil.com/pack/" vendor="Keil" version="7.13.0"/>
         <targetInfos>
           <targetInfo name="LPC1758 Flash"/>
           <targetInfo name="LPC1768 Flash"/>
@@ -1432,7 +1436,7 @@
       <file attr="config" category="header" name="Network_v6\Config\Net_Config_UDP.h" version="5.0.4">
         <instance index="0">RTE\Network\Net_Config_UDP.h</instance>
         <component Cbundle="MDK-Pro Net_v6" Cclass="Network" Cgroup="Socket" Csub="UDP" Cvendor="Keil" Cversion="6.7.7" condition="Network Interface"/>
-        <package name="MDK-Middleware" schemaVersion="1.4" url="http://www.keil.com/pack/" vendor="Keil" version="7.13.0"/>
+        <package license="license.rtf" name="MDK-Middleware" schemaVersion="1.4" url="http://www.keil.com/pack/" vendor="Keil" version="7.13.0"/>
         <targetInfos>
           <targetInfo name="LPC1758 Flash"/>
           <targetInfo name="LPC1768 Flash"/>

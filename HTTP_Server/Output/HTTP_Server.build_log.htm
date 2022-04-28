@@ -3,63 +3,52 @@
 <pre>
 <h1>µVision Build Log</h1>
 <h2>Tool Versions:</h2>
-IDE-Version: µVision V5.34.0.0
-Copyright (C) 2021 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: DTE DTE UPM Flex license: MDK Professional 5.34 (Flex) (mdk_pro) Operation stops: 8 Mar 2024
+IDE-Version: µVision V5.28.0.0
+Copyright (C) 2019 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Juan Varela UPM Flex license: MDK Professional 5.28 (Flex) (mdk_pro) Operation stops: 8 Mar 2024
  
 Tool Versions:
-Toolchain:       MDK Professional 5.34 (Flex)  Version: 5.34.0.0
+Toolchain:       MDK Professional 5.28 (Flex)  Version: 5.28.0.0
 Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
-C Compiler:      Armcc.exe V5.06 update 7 (build 960)
-Assembler:       Armasm.exe V5.06 update 7 (build 960)
-Linker/Locator:  ArmLink.exe V5.06 update 7 (build 960)
-Library Manager: ArmAr.exe V5.06 update 7 (build 960)
-Hex Converter:   FromElf.exe V5.06 update 7 (build 960)
-CPU DLL:         SARMCM3.DLL V5.34.0.0
+C Compiler:      Armcc.exe V5.06 update 6 (build 750)
+Assembler:       Armasm.exe V5.06 update 6 (build 750)
+Linker/Locator:  ArmLink.exe V5.06 update 6 (build 750)
+Library Manager: ArmAr.exe V5.06 update 6 (build 750)
+Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
+CPU DLL:         SARMCM3.DLL V5.28.0.0
 Dialog DLL:      DARMP1.DLL V1.27.0.0
-Target DLL:      CMSIS_AGDI.dll V1.32.13.0
+Target DLL:      CMSIS_AGDI.dll V1.31.18.0
 Dialog DLL:      TARMP1.DLL V1.26.0.0
  
 <h2>Project:</h2>
-C:\Users\marco.santamaria.gon\Desktop\Repositorio local\REPO2\ISE2022_grupoLAB_20_Santamaria_Varela\HTTP_Server\HTTP_Server.uvprojx
-Project File Date:  03/15/2022
+C:\Users\Juan\Desktop\Fase2\HTTP_Server\HTTP_Server.uvprojx
+Project File Date:  04/28/2022
 
 <h2>Output:</h2>
-*** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'LPC1768 Flash'
 
 FCARM uses the following Files via command file '.\Auto_FcArm_Cmd.inp':
 index.htm,
 pg_header.inc,
 pg_footer.inc,
-ad.cgi,
-ad.cgx,
-buttons.cgi,
-buttons.cgx,
-language.cgi,
-lcd.cgi,
-leds.cgi,
-network.cgi,
-system.cgi,
-tcp.cgi,
 xml_http.js,
 home.png,
 keil.gif,
 llblue.jpg,
 logo.gif,
-pabb.gif 
+pabb.gif,
+ganancia.cgi,
+buttons.cgi,
+buttons.cgx 
 TO Web.c RTE NOPRINT ROOT(Web)
 custom translating @.\Auto_FcArm_Cmd.inp...
 Custom: C:\Keil_v5\ARM\Bin\FCARM.exe @.\Auto_FcArm_Cmd.inp
-FCARM FILE CONVERTER V2.58
-Completed 19 File(s), Ratio 85%
-Note: source file 'RTE\Device\LPC1768\startup_LPC17xx.s' - object file renamed from '.\Output\startup_LPC17xx.o' to '.\Output\startup_lpc17xx_1.o'.
-Note: source file 'RTE\Device\LPC1768\system_LPC17xx.c' - object file renamed from '.\Output\system_LPC17xx.o' to '.\Output\system_lpc17xx_1.o'.
+FCARM FILE CONVERTER V2.57
+Completed 12 File(s), Ratio 85%
 compiling Web.c...
-compiling RTC.c...
-compiling HTTP_Server.c...
 linking...
-Program Size: Code=41332 RO-data=32596 RW-data=216 ZI-data=28352  
+Program Size: Code=42768 RO-data=23024 RW-data=204 ZI-data=31364  
 ".\Output\HTTP_Server.axf" - 0 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
@@ -98,6 +87,7 @@ Package Vendor: Keil
                 Middleware for Keil MDK-Professional and MDK-Plus
    * Component: CORE Variant: Release Version: 6.7.7
    * Component: ETH Version: 6.7.7
+   * Component: SNTP Client Version: 6.7.7
    * Component: Web Server Compact Version: 6.7.7
    * Component: TCP Version: 6.7.7
    * Component: UDP Version: 6.7.7
@@ -106,12 +96,12 @@ Package Vendor: Keil
   .\RTE\Device\LPC1768
   .\RTE\Network
   .\RTE\_LPC1768_Flash
-  C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include
-  C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Driver\Include
-  C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\RTOS\RTX\INC
-  C:\Keil_v5\ARM\PACK\Keil\LPC1700_DFP\2.5.0\Device\Include
-  C:\Keil_v5\ARM\PACK\Keil\LPC1700_DFP\2.5.0\RTE_Driver
-  C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.13.0\Network_v6\Include
+  C:\Users\Juan\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include
+  C:\Users\Juan\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Driver\Include
+  C:\Users\Juan\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\RTOS\RTX\INC
+  C:\Users\Juan\AppData\Local\Arm\Packs\Keil\LPC1700_DFP\2.5.0\Device\Include
+  C:\Users\Juan\AppData\Local\Arm\Packs\Keil\LPC1700_DFP\2.5.0\RTE_Driver
+  C:\Users\Juan\AppData\Local\Arm\Packs\Keil\MDK-Middleware\7.13.0\Network_v6\Include
 
 <h2>Collection of Component Files used:</h2>
 
@@ -129,39 +119,42 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:5.5.0
 
    * Component: ARM::CMSIS:RTOS:Keil RTX:4.82.0
+      Include file:  CMSIS\RTOS\RTX\UserCodeTemplates\osObjects.h
+      Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\main.c
+      Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\MemPool.c
+      Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\MsgQueue.c
       Include file:  CMSIS\RTOS\RTX\INC\cmsis_os.h
       Source file:   CMSIS\RTOS\RTX\Templates\RTX_Conf_CM.c
       Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\MailQueue.c
-      Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\MemPool.c
-      Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\main.c
-      Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\Mutex.c
-      Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\Thread.c
-      Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\Timer.c
-      Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\MsgQueue.c
       Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\Semaphore.c
-      Include file:  CMSIS\RTOS\RTX\UserCodeTemplates\osObjects.h
-      Source file:   CMSIS\RTOS\RTX\SRC\ARM\SVC_Table.s
       Library file:  CMSIS\RTOS\RTX\LIB\ARM\RTX_CM3.lib
+      Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\Timer.c
+      Source file:   CMSIS\RTOS\RTX\SRC\ARM\SVC_Table.s
+      Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\Thread.c
+      Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\Mutex.c
 
    * Component: Keil.MDK-Pro Net_v6::Network:CORE:Release:6.7.7
-      Library file:  Network_v6\Lib\ARM\Net_CM3_L.lib
-      Include file:  Network_v6\Include\rl_net.h
       Source file:   Network_v6\Config\Net_Config.c
+      Include file:  Network_v6\Include\rl_net.h
+      Library file:  Network_v6\Lib\ARM\Net_CM3_L.lib
 
    * Component: Keil.MDK-Pro Net_v6::Network:Interface:ETH:6.7.7
       Include file:  Network_v6\Config\Net_Config_ETH.h
 
+   * Component: Keil.MDK-Pro Net_v6::Network:Service:SNTP Client:6.7.7
+      Include file:  Network_v6\Config\Net_Config_SNTP_Client.h
+
    * Component: Keil.MDK-Pro Net_v6::Network:Service:Web Server Compact:6.7.7
       Source file:   Network_v6\Template\HTTP_Server_Multiuser.c
       Include file:  Network_v6\Config\Net_Config_HTTP_Server.h
-      Source file:   Network_v6\Template\HTTP_Server_CGI.c
       Source file:   Network_v6\Template\HTTP_Server_Access.c
       Source file:   Network_v6\Template\HTTP_Server_Error.c
+      Source file:   Network_v6\Template\HTTP_Server_CGI.c
 
    * Component: Keil.MDK-Pro Net_v6::Network:Socket:TCP:6.7.7
-      Include file:  Network_v6\Config\Net_Config_TCP.h
-      Source file:   Network_v6\Template\TCP_Socket_Server.c
       Source file:   Network_v6\Template\TCP_Socket_Client.c
+      Source file:   Network_v6\Template\TCP_Socket_Server.c
+      Include file:  Network_v6\Config\Net_Config_TCP.h
 
    * Component: Keil.MDK-Pro Net_v6::Network:Socket:UDP:6.7.7
       Include file:  Network_v6\Config\Net_Config_UDP.h
@@ -181,8 +174,8 @@ Package Vendor: Keil
       Source file:   RTE_Driver\GPDMA_LPC17xx.c
 
    * Component: Keil::Device:GPIO:1.1.0
-      Source file:   RTE_Driver\GPIO_LPC17xx.c
       Include file:  RTE_Driver\GPIO_LPC17xx.h
+      Source file:   RTE_Driver\GPIO_LPC17xx.c
 
    * Component: Keil::Device:PIN:1.0.0
       Include file:  RTE_Driver\PIN_LPC17xx.h
@@ -191,9 +184,9 @@ Package Vendor: Keil
    * Component: Keil::Device:Startup:1.0.0
       Include file:  Device\Include\LPC17xx.h
       Source file:   Device\Source\ARM\startup_LPC17xx.s
-      Include file:  RTE_Driver\Config\RTE_Device.h
       Source file:   Device\Source\system_LPC17xx.c
-Build Time Elapsed:  00:00:01
+      Include file:  RTE_Driver\Config\RTE_Device.h
+Build Time Elapsed:  00:00:00
 </pre>
 </body>
 </html>

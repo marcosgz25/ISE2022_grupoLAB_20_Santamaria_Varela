@@ -273,7 +273,7 @@
         <bEvRecOn>1</bEvRecOn>
         <bSchkAxf>0</bSchkAxf>
         <bTchkAxf>0</bTchkAxf>
-        <nTsel>2</nTsel>
+        <nTsel>3</nTsel>
         <sDll></sDll>
         <sDllPa></sDllPa>
         <sDlgDll></sDlgDll>
@@ -295,12 +295,12 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>CMSIS_AGDI</Key>
-          <Name>-X"MBED CMSIS-DAP" -U101034ccf2fd1d1a0c1caea7a35011fa -O4303 -S8 -C0 -P00000000 -N00("ARM CoreSight SW-DP") -D00(2BA01477) -L00(0) -TO65552 -TC100000000 -TT100000000 -TP20 -TDS804F -TDT0 -TDC1F -TIE80000001 -TIP9 -FO15 -FD10000000 -FCFE0 -FN1 -FF0LPC_IAP_512.FLM -FS00 -FL080000 -FP0($$Device:LPC1768$Flash\LPC_IAP_512.FLM)</Name>
+          <Name>-X"MBED CMSIS-DAP" -U101034ccf2fd1d1a0c1caea7a35011fa -O4303 -S8 -C0 -P00 -N00("ARM CoreSight SW-DP") -D00(2BA01477) -L00(0) -TO65552 -TC100000000 -TT100000000 -TP20 -TDS804F -TDT0 -TDC1F -TIE80000001 -TIP9 -FO7 -FD10000000 -FCFE0 -FN1 -FF0LPC_IAP_512.FLM -FS00 -FL080000 -FP0($$Device:LPC1768$Flash\LPC_IAP_512.FLM)</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGTARM</Key>
-          <Name>(1010=359,146,744,702,0)(1007=105,137,292,412,0)(1008=-1,-1,-1,-1,0)(1009=120,152,354,689,0)(1012=-1,-1,-1,-1,0)(350=-1,-1,-1,-1,0)(250=-1,-1,-1,-1,0)(270=-1,-1,-1,-1,0)(313=-1,-1,-1,-1,0)(291=-1,-1,-1,-1,0)(302=98,129,360,578,0)(110=-1,-1,-1,-1,0)(113=-1,-1,-1,-1,0)(320=-1,-1,-1,-1,0)(210=-1,-1,-1,-1,0)(330=-1,-1,-1,-1,0)(332=-1,-1,-1,-1,0)(333=-1,-1,-1,-1,0)(334=-1,-1,-1,-1,0)(335=-1,-1,-1,-1,0)(336=-1,-1,-1,-1,0)(345=-1,-1,-1,-1,0)(346=-1,-1,-1,-1,0)(381=-1,-1,-1,-1,0)(382=-1,-1,-1,-1,0)(383=-1,-1,-1,-1,0)(384=-1,-1,-1,-1,0)(197=-1,-1,-1,-1,0)(198=-1,-1,-1,-1,0)(191=-1,-1,-1,-1,0)(192=-1,-1,-1,-1,0)(180=-1,-1,-1,-1,0)(261=-1,-1,-1,-1,0)(262=-1,-1,-1,-1,0)(231=-1,-1,-1,-1,0)(232=-1,-1,-1,-1,0)(233=-1,-1,-1,-1,0)(121=-1,-1,-1,-1,0)(122=-1,-1,-1,-1,0)(123=-1,-1,-1,-1,0)(124=-1,-1,-1,-1,0)(170=-1,-1,-1,-1,0)(142=-1,-1,-1,-1,0)(150=-1,-1,-1,-1,0)(400=-1,-1,-1,-1,0)(370=-1,-1,-1,-1,0)(160=-1,-1,-1,-1,0)(280=-1,-1,-1,-1,0)(240=-1,-1,-1,-1,0)</Name>
+          <Name>(1010=359,146,744,702,0)(1007=105,137,292,412,0)(1008=90,121,466,357,0)(1009=120,152,354,689,0)(1012=135,169,610,483,0)(350=-1,-1,-1,-1,0)(250=-1,-1,-1,-1,0)(270=128,161,330,302,0)(313=-1,-1,-1,-1,0)(291=-1,-1,-1,-1,0)(302=98,129,360,578,0)(110=-1,-1,-1,-1,0)(113=-1,-1,-1,-1,0)(320=-1,-1,-1,-1,0)(210=-1,-1,-1,-1,0)(330=-1,-1,-1,-1,0)(332=-1,-1,-1,-1,0)(333=-1,-1,-1,-1,0)(334=-1,-1,-1,-1,0)(335=-1,-1,-1,-1,0)(336=-1,-1,-1,-1,0)(345=-1,-1,-1,-1,0)(346=-1,-1,-1,-1,0)(381=-1,-1,-1,-1,0)(382=-1,-1,-1,-1,0)(383=-1,-1,-1,-1,0)(384=-1,-1,-1,-1,0)(197=-1,-1,-1,-1,0)(198=-1,-1,-1,-1,0)(191=-1,-1,-1,-1,0)(192=-1,-1,-1,-1,0)(180=195,234,475,631,0)(261=-1,-1,-1,-1,0)(262=-1,-1,-1,-1,0)(231=-1,-1,-1,-1,0)(232=-1,-1,-1,-1,0)(233=-1,-1,-1,-1,0)(121=-1,-1,-1,-1,0)(122=-1,-1,-1,-1,0)(123=-1,-1,-1,-1,0)(124=-1,-1,-1,-1,0)(170=-1,-1,-1,-1,0)(142=-1,-1,-1,-1,0)(150=-1,-1,-1,-1,0)(400=-1,-1,-1,-1,0)(370=-1,-1,-1,-1,0)(160=-1,-1,-1,-1,0)(280=-1,-1,-1,-1,0)(240=-1,-1,-1,-1,0)</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -318,24 +318,132 @@
           <Name>-UV0510N9E -O4303 -S8 -C0 -P00 -N00("ARM CoreSight SW-DP") -D00(2BA01477) -L00(0) -TO16 -TC100000000 -TP21 -TDS804F -TDT0 -TDC1F -TIE80000001 -TIP9 -FO15 -FD10000000 -FCFE0 -FN1 -FF0LPC_IAP_512.FLM -FS00 -FL080000 -FP0($$Device:LPC1768$Flash\LPC_IAP_512.FLM)</Name>
         </SetRegEntry>
       </TargetDriverDllRegistry>
-      <Breakpoint>
-        <Bp>
-          <Number>0</Number>
-          <Type>0</Type>
-          <LineNumber>283</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>642</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>RTE\CMSIS\RTX_Conf_CM.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\HTTP_Server\RTE/CMSIS/RTX_Conf_CM.c\283</Expression>
-        </Bp>
-      </Breakpoint>
+      <Breakpoint/>
+      <WatchWindow1>
+        <Ww>
+          <count>0</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>tiempo.HOUR,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>1</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>tiempo.SEC,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>2</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>tiempo.YEAR,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>3</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>tiempo.MIN,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>4</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>tiempo.DOM,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>5</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>tiempo.MONTH,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>6</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>time,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>7</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>horaSNTP.tm_sec,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>8</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>horaSNTP.tm_min,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>9</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>horaSNTP.tm_hour,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>10</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>horaSNTP.tm_mday,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>11</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>horaSNTP.tm_mon,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>12</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>horaSNTP.tm_year,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>13</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>DirMAC</ItemText>
+        </Ww>
+        <Ww>
+          <count>14</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>IP,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>15</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>memoria,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>16</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>val,0x10</ItemText>
+        </Ww>
+        <Ww>
+          <count>17</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>bufer[11]</ItemText>
+        </Ww>
+        <Ww>
+          <count>18</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>ganancia,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>19</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>ganancia</ItemText>
+        </Ww>
+        <Ww>
+          <count>20</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>numLED,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>21</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>ID</ItemText>
+        </Ww>
+        <Ww>
+          <count>22</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>ganancy,0x0A</ItemText>
+        </Ww>
+      </WatchWindow1>
+      <MemoryWindow1>
+        <Mm>
+          <WinNumber>1</WinNumber>
+          <SubType>0</SubType>
+          <ItemText>0x40000</ItemText>
+          <AccSizeX>0</AccSizeX>
+        </Mm>
+      </MemoryWindow1>
       <Tracepoint>
         <THDelay>0</THDelay>
       </Tracepoint>
@@ -360,7 +468,7 @@
         <aPa1>0</aPa1>
         <AscS4>0</AscS4>
         <aSer4>0</aSer4>
-        <StkLoc>0</StkLoc>
+        <StkLoc>1</StkLoc>
         <TrcWin>0</TrcWin>
         <newCpu>0</newCpu>
         <uProt>0</uProt>
@@ -622,17 +730,89 @@
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
+    <File>
+      <GroupNumber>1</GroupNumber>
+      <FileNumber>20</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\rebotes.c</PathWithFileName>
+      <FilenameWithoutPath>rebotes.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>1</GroupNumber>
+      <FileNumber>21</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\rebotes.h</PathWithFileName>
+      <FilenameWithoutPath>rebotes.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>1</GroupNumber>
+      <FileNumber>22</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\IAP.c</PathWithFileName>
+      <FilenameWithoutPath>IAP.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>1</GroupNumber>
+      <FileNumber>23</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\IAP.h</PathWithFileName>
+      <FilenameWithoutPath>IAP.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>1</GroupNumber>
+      <FileNumber>24</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\lpc17xx_iap.c</PathWithFileName>
+      <FilenameWithoutPath>lpc17xx_iap.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>1</GroupNumber>
+      <FileNumber>25</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\lpc17xx_iap.h</PathWithFileName>
+      <FilenameWithoutPath>lpc17xx_iap.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
   </Group>
 
   <Group>
     <GroupName>Web files</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>2</GroupNumber>
-      <FileNumber>20</FileNumber>
+      <FileNumber>26</FileNumber>
       <FileType>9</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -644,7 +824,7 @@
     </File>
     <File>
       <GroupNumber>2</GroupNumber>
-      <FileNumber>21</FileNumber>
+      <FileNumber>27</FileNumber>
       <FileType>9</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -656,7 +836,7 @@
     </File>
     <File>
       <GroupNumber>2</GroupNumber>
-      <FileNumber>22</FileNumber>
+      <FileNumber>28</FileNumber>
       <FileType>9</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -668,127 +848,7 @@
     </File>
     <File>
       <GroupNumber>2</GroupNumber>
-      <FileNumber>23</FileNumber>
-      <FileType>9</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\Web\ad.cgi</PathWithFileName>
-      <FilenameWithoutPath>ad.cgi</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>2</GroupNumber>
-      <FileNumber>24</FileNumber>
-      <FileType>9</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\Web\ad.cgx</PathWithFileName>
-      <FilenameWithoutPath>ad.cgx</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>2</GroupNumber>
-      <FileNumber>25</FileNumber>
-      <FileType>9</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\Web\buttons.cgi</PathWithFileName>
-      <FilenameWithoutPath>buttons.cgi</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>2</GroupNumber>
-      <FileNumber>26</FileNumber>
-      <FileType>9</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\Web\buttons.cgx</PathWithFileName>
-      <FilenameWithoutPath>buttons.cgx</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>2</GroupNumber>
-      <FileNumber>27</FileNumber>
-      <FileType>9</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\Web\language.cgi</PathWithFileName>
-      <FilenameWithoutPath>language.cgi</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>2</GroupNumber>
-      <FileNumber>28</FileNumber>
-      <FileType>9</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\Web\lcd.cgi</PathWithFileName>
-      <FilenameWithoutPath>lcd.cgi</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>2</GroupNumber>
       <FileNumber>29</FileNumber>
-      <FileType>9</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\Web\leds.cgi</PathWithFileName>
-      <FilenameWithoutPath>leds.cgi</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>2</GroupNumber>
-      <FileNumber>30</FileNumber>
-      <FileType>9</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\Web\network.cgi</PathWithFileName>
-      <FilenameWithoutPath>network.cgi</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>2</GroupNumber>
-      <FileNumber>31</FileNumber>
-      <FileType>9</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\Web\system.cgi</PathWithFileName>
-      <FilenameWithoutPath>system.cgi</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>2</GroupNumber>
-      <FileNumber>32</FileNumber>
-      <FileType>9</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\Web\tcp.cgi</PathWithFileName>
-      <FilenameWithoutPath>tcp.cgi</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>2</GroupNumber>
-      <FileNumber>33</FileNumber>
       <FileType>9</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -800,7 +860,7 @@
     </File>
     <File>
       <GroupNumber>2</GroupNumber>
-      <FileNumber>34</FileNumber>
+      <FileNumber>30</FileNumber>
       <FileType>9</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -812,7 +872,7 @@
     </File>
     <File>
       <GroupNumber>2</GroupNumber>
-      <FileNumber>35</FileNumber>
+      <FileNumber>31</FileNumber>
       <FileType>9</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -824,7 +884,7 @@
     </File>
     <File>
       <GroupNumber>2</GroupNumber>
-      <FileNumber>36</FileNumber>
+      <FileNumber>32</FileNumber>
       <FileType>9</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -836,7 +896,7 @@
     </File>
     <File>
       <GroupNumber>2</GroupNumber>
-      <FileNumber>37</FileNumber>
+      <FileNumber>33</FileNumber>
       <FileType>9</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -848,13 +908,49 @@
     </File>
     <File>
       <GroupNumber>2</GroupNumber>
-      <FileNumber>38</FileNumber>
+      <FileNumber>34</FileNumber>
       <FileType>9</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Web\pabb.gif</PathWithFileName>
       <FilenameWithoutPath>pabb.gif</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>2</GroupNumber>
+      <FileNumber>35</FileNumber>
+      <FileType>9</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\Web\ganancia.cgi</PathWithFileName>
+      <FilenameWithoutPath>ganancia.cgi</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>2</GroupNumber>
+      <FileNumber>36</FileNumber>
+      <FileType>9</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\Web\buttons.cgi</PathWithFileName>
+      <FilenameWithoutPath>buttons.cgi</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>2</GroupNumber>
+      <FileNumber>37</FileNumber>
+      <FileType>9</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\Web\buttons.cgx</PathWithFileName>
+      <FilenameWithoutPath>buttons.cgx</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -868,7 +964,7 @@
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>3</GroupNumber>
-      <FileNumber>39</FileNumber>
+      <FileNumber>38</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -890,7 +986,7 @@
 
   <Group>
     <GroupName>::CMSIS Driver</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>1</RteFlg>

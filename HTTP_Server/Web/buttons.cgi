@@ -1,46 +1,24 @@
-t <html><head><title>Button inputs</title>
-t <script language=JavaScript type="text/javascript" src="xml_http.js"></script>
-t <script language=JavaScript type="text/javascript">
-# Define URL and refresh timeout
-t var formUpdate = new periodicObj("buttons.cgx", 300);
-t function periodicUpdate() {
-t  if(document.getElementById("refreshChkBox").checked == true) {
-t   updateMultiple(formUpdate);
-t   periodicFormTime = setTimeout("periodicUpdate()", formUpdate.period); 
-t  }
-t  else
-t   clearTimeout(periodicFormTime);
-t }
-t </script></head>
+t <html><head><title>OVERLOAD</title></head>
 i pg_header.inc
-t <h3 align="center"><br>Buttons on the board</h3>
-t <p><font size="2">This page allows you to monitor on board buttons state.
-t  Periodic screen update is based on <b>xml</b> technology. This results in smooth 
-t  flicker-free screen update.<br><br>
-t  Press a button on an evaluation board and observe the change on the screen.</font></p>
-t <form action="buttons.cgi" method="post" id="form1" name="form1">
-t <table border="0" width=99%><font size="3">
+t <h2 align=center><br>OVERLOAD</h2>
+t <p><font size="2">This page allows you to change the overload value</b>.
+t  Simply enter the value you want to compare </b>.<br><br>
+t <form action=buttons.cgi method=post name=cgi>
+t <input type=hidden value="umbral" name=pg>
+t <table border=0 width=99%><font size="3">
 t <tr bgcolor=#aaccff>
 t  <th width=40%>Item</th>
-t  <th width=60%>Status</th>
-t </tr>
-t <tr>
-t  <td><img src="pabb.gif">Buttons [7..0]:</td>
-t  <td align="center">
-t   <input type="checkbox" disabled id="button7">7
-t   <input type="checkbox" disabled id="button6">6
-t   <input type="checkbox" disabled id="button5">5
-t   <input type="checkbox" disabled id="button4">4
-t   <input type="checkbox" disabled id="button3">3
-t   <input type="checkbox" disabled id="button2">2
-t   <input type="checkbox" disabled id="button1">1
-t   <input type="checkbox" disabled id="button0">0
-t  </td>
-t </tr>
+t  <th width=60%>Setting</th></tr>
+# Here begin data setting which is formatted in HTTP_CGI.C module
+t <tr><td><img src=pabb.gif>Umbral</td>
+c f 1 <td><input type=text name=umbral size=20 maxlength=20 value="%s"></td></tr>
 t </font></table>
-t <p align="center">
-t  <input type="button" id="refreshBtn" value="Refresh" onclick="updateMultiple(formUpdate)">
-t  Periodic:<input type="checkbox" id="refreshChkBox" onclick="periodicUpdate()">
+# Here begin button definitions
+t <p align=center>
+t <input type=submit name=set value="Send" id="sbm">
+t <p align=center>
+t Activar:<input type="checkbox" id="umbralChkBox" onclick="periodicUpdateRTC()">
 t </p></form>
 i pg_footer.inc
-. End of script must be closed with period.
+. End of script must be closed with period. 
+

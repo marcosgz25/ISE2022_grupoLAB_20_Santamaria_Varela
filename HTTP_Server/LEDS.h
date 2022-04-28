@@ -6,6 +6,10 @@
 #include "PIN_LPC17xx.h"
 #include "LPC17xx.h"
 
+#define PUERTO_LEDRGB 2
+#define RED	3
+#define GREEN	2
+#define BLUE 1
 
 //Funciones
 extern int32_t LED_Initialize(void);

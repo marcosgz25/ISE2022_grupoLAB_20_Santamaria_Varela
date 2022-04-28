@@ -28,6 +28,12 @@ int32_t LED_Initialize (void) {
   /* Enable GPIO clock */
   GPIO_PortClock     (1U);
   /* Configure pins: Output Mode with Pull-down resistors */
+	GPIO_SetDir (PUERTO_LEDRGB, RED, GPIO_DIR_OUTPUT);
+  GPIO_SetDir (PUERTO_LEDRGB, BLUE, GPIO_DIR_OUTPUT);
+  GPIO_SetDir (PUERTO_LEDRGB, GREEN, GPIO_DIR_OUTPUT);
+	GPIO_PinWrite (PUERTO_LEDRGB, RED, 1);
+	GPIO_PinWrite (PUERTO_LEDRGB, BLUE, 1);
+	GPIO_PinWrite (PUERTO_LEDRGB, GREEN, 1);
   for (n = 0; n < LED_COUNT; n++) {
     PIN_Configure (LED_PIN[n].Portnum, LED_PIN[n].Pinnum, PIN_FUNC_0, PIN_PINMODE_PULLDOWN, PIN_PINMODE_NORMAL);
     GPIO_SetDir   (LED_PIN[n].Portnum, LED_PIN[n].Pinnum, GPIO_DIR_OUTPUT);

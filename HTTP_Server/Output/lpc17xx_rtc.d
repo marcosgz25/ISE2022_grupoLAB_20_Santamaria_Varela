@@ -1,0 +1,13 @@
+.\output\lpc17xx_rtc.o: lpc17xx_rtc.c
+.\output\lpc17xx_rtc.o: lpc17xx_rtc.h
+.\output\lpc17xx_rtc.o: C:\Users\Juan\AppData\Local\Arm\Packs\Keil\LPC1700_DFP\2.5.0\Device\Include\LPC17xx.h
+.\output\lpc17xx_rtc.o: C:\Users\Juan\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\core_cm3.h
+.\output\lpc17xx_rtc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\output\lpc17xx_rtc.o: C:\Users\Juan\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_version.h
+.\output\lpc17xx_rtc.o: C:\Users\Juan\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_compiler.h
+.\output\lpc17xx_rtc.o: C:\Users\Juan\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_armcc.h
+.\output\lpc17xx_rtc.o: C:\Users\Juan\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\mpu_armv7.h
+.\output\lpc17xx_rtc.o: C:\Users\Juan\AppData\Local\Arm\Packs\Keil\LPC1700_DFP\2.5.0\Device\Include\system_LPC17xx.h
+.\output\lpc17xx_rtc.o: lpc_types.h
+.\output\lpc17xx_rtc.o: lpc17xx_clkpwr.h
+.\output\lpc17xx_rtc.o: lpc17xx_libcfg_default.h

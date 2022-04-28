@@ -12,10 +12,12 @@
 #include "rl_net.h"
 #include "rl_net_lib.h"
 #include "LEDS.h"
+#include "RTC.h"
+
 //#include "Board_LED.h"
 
 // http_server.c
-extern uint16_t AD_in (uint32_t ch);
+
 //extern uint8_t  get_button (void);
 
 // net_sys.c
@@ -29,14 +31,17 @@ extern struct http_cfg  http_config;
 #define tcp_socket      tcp_config.Scb
 #define http_EnAuth     http_config.EnAuth
 #define http_auth_passw http_config.Passw
-
+extern uint16_t ganancy;
 extern bool LEDrun;
 extern bool LCDupdate;
 extern char lcd_text[2][20+1];
+extern void leer_LEDS(uint8_t P2, int modoleds);
+
+
 
 // Local variables.
 static uint8_t P2;
-
+extern uint8_t valor_P2;
 // My structure of CGI status variable.
 typedef struct {
   uint16_t xcnt;
@@ -86,65 +91,36 @@ void cgi_process_query (const char *qstr) {
 //            - 4 = any XML encoded POST data (single or last stream).
 //            - 5 = the same as 4, but with more XML data to follow.
 void cgi_process_data (uint8_t code, const char *data, uint32_t len) {
-  char var[40],passw[12];
+  char var[40];
 
   if (code != 0) {
     // Ignore all other codes
     return;
   }
 
-  P2 = 0;
-  LEDrun = true;
-  if (len == 0) {
-    // No data or all items (radio, checkbox) are off
-    LED_SetOut (P2);
-    return;
-  }
-  passw[0] = 1;
   do {
     // Parse all parameters
     data = http_get_env_var (data, var, sizeof (var));
     if (var[0] != 0) {
-      // First character is non-null, string exists
-      if (strcmp (var, "led0=on") == 0) {
-        P2 |= 0x01;
+      if (strcmp (var, "ctrl=Ganancia1") == 0) 
+			{
+        ganancy=1;
       }
-      else if (strcmp (var, "led1=on") == 0) {
-        P2 |= 0x02;
+			else if (strcmp (var, "ctrl=Ganancia5") == 0) 
+			{
+        ganancy=5;
       }
-      else if (strcmp (var, "led2=on") == 0) {
-        P2 |= 0x04;
+			else if (strcmp (var, "ctrl=Ganancia10") == 0) 
+			{
+        ganancy=10;
       }
-      else if (strcmp (var, "led3=on") == 0) {
-        P2 |= 0x08;
+			else if (strcmp (var, "ctrl=Ganancia50") == 0) 
+			{
+        ganancy=50;
       }
-//      else if (strcmp (var, "led4=on") == 0) {
-//        P2 |= 0x10;
-//      }
-//      else if (strcmp (var, "led5=on") == 0) {
-//        P2 |= 0x20;
-//      }
-//      else if (strcmp (var, "led6=on") == 0) {
-//        P2 |= 0x40;
-//      }
-//      else if (strcmp (var, "led7=on") == 0) {
-//        P2 |= 0x80;
-//      }
-      else if (strcmp (var, "ctrl=Browser") == 0) {
-        LEDrun = false;
-      }
-      else if ((strncmp (var, "pw0=", 4) == 0) ||
-               (strncmp (var, "pw2=", 4) == 0)) {
-        // Change password, retyped password
-        if (http_EnAuth) {
-          if (passw[0] == 1) {
-            strcpy (passw, var+4);
-          }
-          else if (strcmp (passw, var+4) == 0) {
-            // Both strings are equal, change the password
-            strcpy (http_auth_passw, passw);
-          }
-        }
+			else if (strcmp (var, "ctrl=Ganancia100") == 0) 
+			{
+        ganancy=100;
       }
       else if (strncmp (var, "lcd1=", 5) == 0) {
         // LCD Module line 1 text
@@ -158,8 +134,11 @@ void cgi_process_data (uint8_t code, const char *data, uint32_t len) {
       }
     }
   } while (data);
-  LED_SetOut (P2);
+	//leer_LEDS(P2,LEDrun);
 }
+
+
+
 
 // Generate dynamic web data from a script line.
 uint32_t cgi_script (const char *env, char *buf, uint32_t buflen, uint32_t *pcgi) {
@@ -201,19 +180,11 @@ uint32_t cgi_script (const char *env, char *buf, uint32_t buflen, uint32_t *pcgi
       // LED control from 'led.cgi'
       if (env[2] == 'c') {
         // Select Control
-        len = sprintf (buf, &env[4], LEDrun ?     ""     : "selected",
-                                     LEDrun ? "selected" :    ""     );
-        break;
+//        len = sprintf (buf, &env[4], ganancy ?     ""     : "selected",
+//                                     ganancy ? "selected" :    ""     );
+				len=sprintf(buf, &env[4], ganancy);
       }
-      // LED CheckBoxes
-      id = env[2] - '0';
-      if (id > 7) {
-        id = 0;
-      }
-      id = 1 << id;
-      len = sprintf (buf, &env[4], (P2 & id) ? "checked" : "");
-      break;
-
+			break;
     case 'c':
       // TCP status from 'tcp.cgi'
       while ((len + 150) < buflen) {
@@ -292,34 +263,29 @@ uint32_t cgi_script (const char *env, char *buf, uint32_t buflen, uint32_t *pcgi
           break;
       }
       break;
-
-    case 'g':
-      // AD Input from 'ad.cgi'
-      switch (env[2]) {
+   		case 'w':
+      // Button state from 'button.cgi'
+			switch (env[2]) {
         case '1':
-          adv = AD_in (0);
-          len = sprintf (buf, &env[4], adv);
+          len = sprintf (buf, &env[4], lcd_text[0]);
           break;
         case '2':
-          len = sprintf (buf, &env[4], (float)adv*3.3f/4096);
-          break;
-        case '3':
-          adv = (adv * 100) / 4096;
-          len = sprintf (buf, &env[4], adv);
+          len = sprintf (buf, &env[4], lcd_text[1]);
           break;
       }
       break;
-
-    case 'x':
-      // AD Input from 'ad.cgx'
-      adv = AD_in (0);
-      len = sprintf (buf, &env[1], adv);
-      break;
-
+		
     case 'y':
       // Button state from 'button.cgx'
-//      len = sprintf (buf, "<checkbox><id>button%c</id><on>%s</on></checkbox>",
-//                     env[1], (get_button () & (1 << (env[1]-'0'))) ? "true" : "false");
+
+      len = sprintf (buf, &env[1], lcd_text[0]);
+      
+      break;
+
+       case 'z':
+      // Button state from 'button.cgx'
+
+      len = sprintf (buf, &env[1], lcd_text[1]);
       break;
   }
   return (len);
