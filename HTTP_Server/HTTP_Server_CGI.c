@@ -6,7 +6,8 @@
  * Purpose: HTTP Server CGI Module
  * Rev.:    V6.00
  *----------------------------------------------------------------------------*/
-
+#include <stdlib.h>
+#include <math.h>
 #include <stdio.h>
 #include <string.h>
 #include "rl_net.h"
@@ -32,9 +33,12 @@ extern struct http_cfg  http_config;
 #define http_EnAuth     http_config.EnAuth
 #define http_auth_passw http_config.Passw
 extern uint16_t ganancy;
+double umbral=0;
 extern bool LEDrun;
 extern bool LCDupdate;
 extern char lcd_text[2][20+1];
+char text_umbral[20];
+bool interrupt;
 extern void leer_LEDS(uint8_t P2, int modoleds);
 
 
@@ -92,7 +96,7 @@ void cgi_process_query (const char *qstr) {
 //            - 5 = the same as 4, but with more XML data to follow.
 void cgi_process_data (uint8_t code, const char *data, uint32_t len) {
   char var[40];
-
+	interrupt=true;
   if (code != 0) {
     // Ignore all other codes
     return;
@@ -122,171 +126,48 @@ void cgi_process_data (uint8_t code, const char *data, uint32_t len) {
 			{
         ganancy=100;
       }
-      else if (strncmp (var, "lcd1=", 5) == 0) {
-        // LCD Module line 1 text
-        strcpy (lcd_text[0], var+5);
+			else if (strcmp (var, "ctrl=Enable") == 0) 
+			{
+				interrupt=false;
+			}
+      else if (strncmp (var, "lcd1=", 5) == 0)
+			{
+        strcpy (text_umbral, var+5);
         LCDupdate = true;
-      }
-      else if (strncmp (var, "lcd2=", 5) == 0) {
-        // LCD Module line 2 text
-        strcpy (lcd_text[1], var+5);
-        LCDupdate = true;
+				umbral=atof(text_umbral);
+				umbral=fabs(umbral);
+				if(umbral>10)
+				{
+					umbral=10;
+				}
       }
     }
   } while (data);
-	//leer_LEDS(P2,LEDrun);
 }
-
-
-
 
 // Generate dynamic web data from a script line.
 uint32_t cgi_script (const char *env, char *buf, uint32_t buflen, uint32_t *pcgi) {
-  TCP_INFO *tsoc;
-  const char *lang;
   uint32_t len = 0;
-  uint8_t id;
-  static uint32_t adv;
-
   switch (env[0]) {
-    // Analyze a 'c' script line starting position 2
-    case 'a' :
-      // Network parameters from 'network.cgi'
-      switch (env[2]) {
-        case 'i':
-          // Write local IP address
-          len = sprintf (buf, &env[4], ip4_ntoa (LocM.IpAddr));
-          break;
-        case 'm':
-          // Write local network mask
-          len = sprintf (buf, &env[4], ip4_ntoa (LocM.NetMask));
-          break;
-        case 'g':
-          // Write default gateway IP address
-          len = sprintf (buf, &env[4], ip4_ntoa (LocM.DefGW));
-          break;
-        case 'p':
-          // Write primary DNS server IP address
-          len = sprintf (buf, &env[4], ip4_ntoa (LocM.PriDNS));
-          break;
-        case 's':
-          // Write secondary DNS server IP address
-          len = sprintf (buf, &env[4], ip4_ntoa (LocM.SecDNS));
-          break;
-      }
-      break;
-
     case 'b':
-      // LED control from 'led.cgi'
-      if (env[2] == 'c') {
-        // Select Control
-//        len = sprintf (buf, &env[4], ganancy ?     ""     : "selected",
-//                                     ganancy ? "selected" :    ""     );
+      if (env[2] == 'c')
+			{
 				len=sprintf(buf, &env[4], ganancy);
+				break;
       }
-			break;
-    case 'c':
-      // TCP status from 'tcp.cgi'
-      while ((len + 150) < buflen) {
-        tsoc = &tcp_socket[MYBUF(pcgi)->xcnt];
-        MYBUF(pcgi)->xcnt++;
-        // 'sprintf' format string is defined here
-        len += sprintf (buf+len,   "<tr align=\"center\">");
-        if (tsoc->State <= tcpStateCLOSED) {
-          len += sprintf (buf+len, "<td>%d</td><td>%s</td><td>-</td><td>-</td>"
-                                   "<td>-</td><td>-</td></tr>\r\n",
-                                   MYBUF(pcgi)->xcnt,tcp_ntoa(tsoc->State));
-        }
-        else if (tsoc->State == tcpStateLISTEN) {
-          len += sprintf (buf+len, "<td>%d</td><td>%s</td><td>%d</td><td>-</td>"
-                                   "<td>-</td><td>-</td></tr>\r\n",
-                                   MYBUF(pcgi)->xcnt, tcp_ntoa(tsoc->State), tsoc->LocPort);
-        }
-        else {
-          len += sprintf (buf+len, "<td>%d</td><td>%s</td><td>%d</td>"
-                                   "<td>%d</td><td>%s</td><td>%d</td></tr>\r\n",
-                                   MYBUF(pcgi)->xcnt, tcp_ntoa(tsoc->State), tsoc->LocPort,
-                                   tsoc->AliveTimer, ip4_ntoa (tsoc->RemAddr), tsoc->RemPort);
-        }
-        // Repeat for all TCP Sockets
-        if (MYBUF(pcgi)->xcnt == tcp_NumSocks) {
-          break;
-        }
-      }
-      if (MYBUF(pcgi)->xcnt < tcp_NumSocks) {
-        // Hi bit is a repeat flag
-        len |= (1u << 31);
-      }
-      break;
-
-    case 'd':
-      // System password from 'system.cgi'
-      switch (env[2]) {
-        case '1':
-          len = sprintf (buf, &env[4], http_EnAuth ? "Enabled" : "Disabled");
-          break;
-        case '2':
-          len = sprintf (buf, &env[4], http_auth_passw);
-          break;
-      }
-      break;
-
-    case 'e':
-      // Browser Language from 'language.cgi'
-      lang = http_server_get_lang ();
-      if      (strncmp (lang, "en", 2) == 0) {
-        lang = "English";
-      }
-      else if (strncmp (lang, "de", 2) == 0) {
-        lang = "German";
-      }
-      else if (strncmp (lang, "fr", 2) == 0) {
-        lang = "French";
-      }
-      else if (strncmp (lang, "sl", 2) == 0) {
-        lang = "Slovene";
-      }
-      else {
-        lang = "Unknown";
-      }
-      len = sprintf (buf, &env[2], lang, http_server_get_lang());
-      break;
-
     case 'f':
-      // LCD Module control from 'lcd.cgi'
-      switch (env[2]) {
-        case '1':
-          len = sprintf (buf, &env[4], lcd_text[0]);
-          break;
-        case '2':
-          len = sprintf (buf, &env[4], lcd_text[1]);
-          break;
-      }
-      break;
-   		case 'w':
-      // Button state from 'button.cgi'
-			switch (env[2]) {
-        case '1':
-          len = sprintf (buf, &env[4], lcd_text[0]);
-          break;
-        case '2':
-          len = sprintf (buf, &env[4], lcd_text[1]);
-          break;
-      }
-      break;
-		
-    case 'y':
-      // Button state from 'button.cgx'
-
-      len = sprintf (buf, &env[1], lcd_text[0]);
-      
-      break;
-
-       case 'z':
-      // Button state from 'button.cgx'
-
-      len = sprintf (buf, &env[1], lcd_text[1]);
-      break;
+				if (env[2] == 'c')
+				{
+				// Select Control
+					len = sprintf (buf, &env[4], interrupt ? "" : "selected",
+					interrupt ? "selected" : "" );
+					break;
+				}
+				if(env[2]=='1')
+				{
+					len = sprintf (buf, &env[4], text_umbral);
+					break;
+				}
   }
   return (len);
 }

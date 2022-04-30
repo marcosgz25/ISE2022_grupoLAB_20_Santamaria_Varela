@@ -567,11 +567,6 @@
               <FileType>9</FileType>
               <FilePath>.\Web\buttons.cgi</FilePath>
             </File>
-            <File>
-              <FileName>buttons.cgx</FileName>
-              <FileType>9</FileType>
-              <FilePath>.\Web\buttons.cgx</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
@@ -1158,11 +1153,6 @@
               <FileName>buttons.cgi</FileName>
               <FileType>9</FileType>
               <FilePath>.\Web\buttons.cgi</FilePath>
-            </File>
-            <File>
-              <FileName>buttons.cgx</FileName>
-              <FileType>9</FileType>
-              <FilePath>.\Web\buttons.cgx</FilePath>
             </File>
           </Files>
         </Group>

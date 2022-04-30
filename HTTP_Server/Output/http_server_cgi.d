@@ -1,4 +1,6 @@
 .\output\http_server_cgi.o: HTTP_Server_CGI.c
+.\output\http_server_cgi.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\output\http_server_cgi.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 .\output\http_server_cgi.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\output\http_server_cgi.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\output\http_server_cgi.o: C:\Users\Juan\AppData\Local\Arm\Packs\Keil\MDK-Middleware\7.13.0\Network_v6\Include\rl_net.h
